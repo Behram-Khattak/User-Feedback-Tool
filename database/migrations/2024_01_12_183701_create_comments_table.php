@@ -27,7 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_id')
                     ->nullable();
 
-            $table->text('comment');
+            $table->longText('comment');
             $table->timestamps();
         });
     }

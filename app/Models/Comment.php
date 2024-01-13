@@ -28,23 +28,13 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    // /**
-    //  * Get the feedback that owns the Comment
-    //  *
-    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    //  */
-    // public function feedback(): BelongsTo
-    // {
-    //     return $this->belongsTo(Feedback::class);
-    // }
-
     /**
-     * Get all of the replies for the Comment
+     * Get the feedback that owns the Comment
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function replies(): HasMany
+    public function feedback(): BelongsTo
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->belongsTo(Feedback::class);
     }
 }
