@@ -1,0 +1,56 @@
+<x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <x-slot:main>
+        <div class="container mx-auto">
+            <div class="grid place-items-center">
+
+                <form method="POST" action="{{ route('login') }}"
+                        class="w-96 shadow-lg bg-gray-200 rounded-xl p-4">
+                    @csrf
+
+                    <div class="title py-4">
+                        <h1 class="text-4xl font-extrabold text-center uppercase">login</h1>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div>
+                        <x-input-label for="email" :value="__('Email')" />
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mt-4">
+                        <x-input-label for="password" :value="__('Password')" />
+
+                        <x-text-input id="password" class="block mt-1 w-full"
+                                        type="password"
+                                        name="password"
+                                        required autocomplete="current-password" />
+
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        href="{{ route('register') }}">
+                        {{ __("Don't have an account?") }}
+                    </a>
+
+                    <div class="text-center mt-4">
+                        <x-primary-button class="ms-3">
+                            {{ __('Log in') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </x-slot:main>
+
+    <x-slot:script>
+        <script>
+            //
+        </script>
+    </x-slot:script>
+</x-guest-layout>
