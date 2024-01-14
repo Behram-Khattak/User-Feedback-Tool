@@ -1,0 +1,12 @@
+version: "2.23.0"
+
+services:
+    app:
+        build: .
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/var/www/html
+            - ./vendor/:/var/www/html/vendor
+        depends_on:
+            - db
